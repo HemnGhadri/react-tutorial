@@ -1,3 +1,11 @@
 virtual dom vs dom
 
-1.06
+
+
+stateless vs stateful:
+stIn React, there are two key concepts you need to know: stateless and stateful components.
+Stateless components are easy to use and can be reused in different parts of your app.
+Stateful components are more complex and are used to manage state and handle user events.
+
+
+1.58
