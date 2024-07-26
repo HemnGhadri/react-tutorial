@@ -3,8 +3,8 @@ import '../css/product.css'
 
 class Product extends React.Component {
     state = {
-        productName: "",
-        count: 0
+        productName: this.props.productName,
+        count: this.props.count
     }
     price = 3600
 
@@ -16,6 +16,7 @@ class Product extends React.Component {
         return (
             <React.Fragment>
                 <span className='m-2 text-info' style={{borderRadius: "15px", backgroundColor: "lightgray", padding: 10}}>{productName}</span>
+                <span>{this.props.children}</span>
                 <span className='m-2 badge bg-primary'>{this.productCount()}</span>
                 <span className='m-2 badge bg-secondary'>{this.price >= 0 ? this.price : "Zero"}</span>
                 <button onClick={this.handelIncrement} className='m-2 btn btn-smol btn-success'>+</button>
