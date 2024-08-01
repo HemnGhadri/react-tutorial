@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client'
 // import Products from './components/product'
 // import Products from './components/functional/product'
 // import Products from './components/products'
-import Products from './components/productsFunctional'
+import Products from './components/functional/productsFunctional'
 import 'bootstrap/dist/css/bootstrap.css';
 // const element = <h1>React element</h1>
 
