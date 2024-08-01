@@ -6,6 +6,12 @@ stateless vs stateful:
 stIn React, there are two key concepts you need to know: stateless and stateful components.
 Stateless components are easy to use and can be reused in different parts of your app.
 Stateful components are more complex and are used to manage state and handle user events.
+کامپوننتی که استیت داره میگن استیتفول و کامپونینتی که استیت نداشته باشه میگم استیتلس
+استیت شما را از گیت المنت با ایدی و ... رها میکنه و کار راحت تر میشه
 
+استیت ها در فانکشنال کامپوننت ها با استفاده از هوک امکان پذیر است
 
-1.58
+کامپوننتی که هیچ استیتی نداره و همه استیت ها توسط پدر آن و پرامپ کنترل میشه میگن کنترل کامپوننت. یعنی توسط یکی دیگه کنترل میشه
+
+2.43
+3.11
