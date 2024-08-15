@@ -14,4 +14,13 @@ Stateful components are more complex and are used to manage state and handle use
 کامپوننتی که هیچ استیتی نداره و همه استیت ها توسط پدر آن و پرامپ کنترل میشه میگن کنترل کامپوننت. یعنی توسط یکی دیگه کنترل میشه
 
 
+constractor
+render
+componentDidMount
+componentWillUmount
+if functional:
+useEffect
+
 3.59 - 4.18
+
+4.58
