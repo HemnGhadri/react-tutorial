@@ -8,20 +8,30 @@ import styles from "./css/style.css"
 class Users extends Component {
     state = {
         users: [],
-        loading: true
+        loading: true,
+        error: ""
     };
 
     async componentDidMount() {
         const response = await axios.get("https://reqres.in/api/users");
         setTimeout(() => {
             this.setState({users: response.data.data, loading: false});
-        }, 3000)
+        }, 1000)
 
     }
 
     render() {
         return (
             <>
+                {this.state.error ? (
+                        <div className="alert alert-danger">
+                            <strong>Danger!</strong> {this.state.error}.
+                        </div>
+                    ) :
+                    (<div></div>)
+                }
+
+
                 <div className="container my-5">
                     <h2 className="mb-4">User List</h2>
                     <div className="table-responsive">
@@ -61,11 +71,69 @@ class Users extends Component {
         )
     }
 
-    handelDelete = (userId) => {
-        console.log(userId)
+    handelDelete = async (userId) => {
+        console.log('Start delete user')
+        const response = await axios.delete(`https://reqres.in/api/users/${userId}`)
+        // if response.
+        if (response.status === 204) {
+            const newUsers = this.state.users.filter((user) => {
+                if (user.id !== userId) {
+                    return user
+                }
+            })
+            this.setState({users: newUsers})
+            console.log(`delete user ${userId}`)
+        } else {
+            this.setState({error: "Error in Delete User"})
+
+        }
     }
-    handelEdite = (userId) => {
-        console.log(userId)
+    handelEdite = async (userId) => {
+
+        await axios.put(`https://reqres.in/api/users/${userId}`).then(success => {
+                // handle success
+                console.log(success)
+                if (success.status !== 200) {
+                    throw "Error update"
+                }
+                const newUsers = this.state.users.map((user) => {
+                    if (user.id === userId) {
+                        user.first_name = "Seyed Hemn"
+                        user.last_name = "Ghaderi"
+                        user.avatar = "https://picsum.photos/200/"
+                    }
+                    return user
+                })
+                this.setState({users: newUsers})
+            }
+        ).catch(error => {
+                // handle error
+                console.log(error)
+                this.setState({error: "Error in Update User"})
+            }
+        ).finally(function () {
+            // always executed
+            console.log("Done this function")
+        })
+
+
+        // console.log('start update user')
+        // const response = await axios.put(`https://reqres.in/api/users/${userId}`)
+        // if (response.status === 200) {
+        //     const newUsers = this.state.users.map((user) => {
+        //         if (user.id === userId) {
+        //             user.first_name = "Seyed Hemn"
+        //             user.last_name = "Ghaderi"
+        //             user.avatar = "https://picsum.photos/200/"
+        //         }
+        //         return user
+        //     })
+        //     this.setState({users:newUsers})
+        // }
+        // else{
+        //      this.setState({error: "Error in Update User"})
+        // }
+        // console.log('end update user')
     }
 }
 
